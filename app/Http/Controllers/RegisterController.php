@@ -29,6 +29,6 @@ class RegisterController extends Controller
             'password' => bcrypt($attributes['password'])
         ]);
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Account successfully created!');
     }
 }
