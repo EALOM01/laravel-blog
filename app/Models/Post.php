@@ -32,6 +32,16 @@ class Post extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    /**
+     * Eloquent model: a POST has Many COMMENTs
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function scopeFilter($query, array $filters)
     {
         $query->when(
