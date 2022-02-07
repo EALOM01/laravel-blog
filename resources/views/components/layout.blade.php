@@ -19,15 +19,12 @@
                 @auth
                 <span class="text-xs font-bold uppercase">welcome back, {{auth()->user()->name}}!</span>
                 <form method="POST" action="/logout">
-                    {{csrf_field()}}
+                    @csrf
                     <button type="submit" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">Log out</button>
                 </form>
                 @else
-                <a href="/register" class="text-xs font-bold uppercase">Register</a>
-                <form method="POST" action="/">
-                    {{csrf_field()}}
-                    <button type="submit" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">log in</button>
-                </form>
+                <a href="/register" class="text-xs mx-3 font-bold uppercase">Register</a>
+                <a href="/login" class="text-xs mx-3 font-bold uppercase">login</a>
                 @endauth
                 <a href="#" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                     Subscribe for Updates

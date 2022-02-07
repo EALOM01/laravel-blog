@@ -27,7 +27,7 @@ class RegisterController extends Controller
             'name' => $attributes['name'],
             'username' => $attributes['username'],
             'email' => $attributes['email'],
-            'password' => bcrypt($attributes['password'])
+            'password' => $attributes['password']
         ]);
 
         auth()->login($user);
