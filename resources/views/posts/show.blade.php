@@ -62,8 +62,27 @@
                         </div>
                     </div>
 
+
                     <!-- Comment Section -->
                     <section class="col-span-8 col-start-5 mt-10 space-y-6">
+                        <form method="POST" action="/" class="border border-gray-200 p-6 rounded-xl space-y-3">
+                            @csrf
+
+                            <header class="flex space-x-4 items-center">
+                                <img src="https://i.pravatar.cc/40?u={{auth()->id()}}" alt="" width="40" height="40" class="rounded-full">
+                                <h2>Want to participate?</h2>
+                            </header>
+
+                            <div>
+                                <textarea name="body" class="w-full focus:outline-none focus:ring p-2" rows="5" placeholder="What do you think?"></textarea>
+                            </div>
+
+                            <hr />
+                            <div class="flex justify-end">
+                                <button type="submit" class="bg-blue-500 text-white uppercase font-semibold text-xs py-2 px-10 hover:bg-blue-600 rounded-2xl">post</button>
+                            </div>
+                        </form>
+
                         @foreach ($post->comments as $comment)
                         <x-post-comment :comment="$comment" />
                         @endforeach
