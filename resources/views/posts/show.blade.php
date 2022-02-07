@@ -65,7 +65,8 @@
 
                     <!-- Comment Section -->
                     <section class="col-span-8 col-start-5 mt-10 space-y-6">
-                        <form method="POST" action="/" class="border border-gray-200 p-6 rounded-xl space-y-3">
+                        @auth
+                        <form method="POST" action="/posts/{{$post->slug}}/comments" class="border border-gray-200 p-6 rounded-xl space-y-3">
                             @csrf
 
                             <header class="flex space-x-4 items-center">
@@ -82,6 +83,17 @@
                                 <button type="submit" class="bg-blue-500 text-white uppercase font-semibold text-xs py-2 px-10 hover:bg-blue-600 rounded-2xl">post</button>
                             </div>
                         </form>
+                        @else
+                        <div class="flex space-x-4 items-center">
+                            <a href="/register">
+                                <button class="bg-blue-500 text-white uppercase font-semibold text-xs py-2 px-10 hover:bg-blue-600 rounded-2xl">new user? sign up here!</button>
+                            </a>
+                            <p> or </p>
+                            <a href="/login">
+                                <button class="bg-blue-500 text-white uppercase font-semibold text-xs py-2 px-10 hover:bg-blue-600 rounded-2xl">log in to comment</button>
+                            </a>
+                        </div>
+                        @endauth
 
                         @foreach ($post->comments as $comment)
                         <x-post-comment :comment="$comment" />
